@@ -20,13 +20,17 @@ import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import com.minhasfinancas.model.enums.StatusLancamento;
 import com.minhasfinancas.model.enums.TipoLancamento;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="lancamento", schema="financas")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Lancamento {
 	
 	@Id
@@ -44,13 +48,13 @@ public class Lancamento {
 	private Integer ano;
 	
 	@ManyToOne
-	@JoinColumn(name = "idusuario")
+	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	
 	@Column(name = "valor")
 	private BigDecimal valor;
 	
-	@Column(name= "datacadastro")
+	@Column(name= "data_cadastro")
 	@Convert(converter = Jsr310JpaConverters.LocalDateConverter.class)
 	private LocalDate dataCadastro;
 	
