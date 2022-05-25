@@ -45,6 +45,7 @@ public class LancamentoServiceImpl implements LancamentoService {
 	@Override
 	@Transactional
 	public void apagar(Lancamento lancamento) {
+		Objects.requireNonNull(lancamento.getId());
 		repository.delete(lancamento);
 	}
 
